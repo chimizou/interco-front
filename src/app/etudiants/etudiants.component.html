@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="panel panel-heading">Liste des étudiants</div>
+    <div class="panel-body">
+        <button class="btn btn-primary" (click)="onGetEtudiants()">Etudiants</button>
+    </div>
+    <div class="panel-body">
+        <table *ngIf="etudiants" class="table table striped">
+            <tr>
+                <th>ID</th><th>Nom</th><th>Prenom</th><th>Date naissance</th>
+            </tr>
+            <tr *ngFor="let etudiant of etudiants._embedded.etudiants">
+                <td>{{ etudiant.idEtudiant }}</td>
+                <td>{{ etudiant.nom }}</td>
+                <td>{{ etudiant.prenom }}</td>
+                <td>{{ etudiant.dateNaissance }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
