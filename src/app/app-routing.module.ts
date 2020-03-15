@@ -1,22 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EtudiantsComponent } from './etudiants/etudiants.component';
-import { AjouterEtudiantComponent } from './etudiants/ajouter-etudiant/ajouter-etudiant.component';
+import { CandidatesComponent } from './candidates/candidates.component';
+import { AddCandidateComponent } from './candidates/add-candidate/add-candidate.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/etudiants",
+    redirectTo: "/candidates",
     pathMatch: "full"
   },
   {
-    path: "etudiants",
-    component: EtudiantsComponent
+    path: "candidates",
+    component: CandidatesComponent
   },
   {
-    path: "ajouter-etudiant",
-    component: AjouterEtudiantComponent
+    path: "add-candidate",
+    component: AddCandidateComponent
+  },
+  {
+   path: "login",
+   component: LoginComponent
   }
 ];
 
