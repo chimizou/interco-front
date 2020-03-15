@@ -4,16 +4,19 @@
         <button class="btn btn-primary" (click)="onGetCandidates()">Candidates</button>
     </div>
     <div class="panel-body">
-        <table *ngIf="candidates" class="table table striped">
-            <tr>
-                <th>ID</th><th>Nom</th><th>Prenom</th><th>Date naissance</th>
-            </tr>
-            <tr *ngFor="let candidate of candidates._embedded.candidates">
-                <td>{{ candidate.idCandidate }}</td>
-                <td>{{ candidate.firstName }}</td>
-                <td>{{ candidate.lastName }}</td>
-                <td>{{ candidate.birthday }}</td>
-            </tr>
-        </table>
+      <table *ngIf="candidates" class="table table-striped">
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Date naissance</th>
+        </tr>
+        <tr *ngFor="let candidate of candidates._embedded.candidates">
+          <td>{{ candidate.idCandidate }}</td>
+          <td>{{ candidate.firstName }}</td>
+          <td>{{ candidate.lastName }}</td>
+          <td>{{ candidate.birthday }}</td>
+        </tr>
+      </table>
     </div>
 </div>
