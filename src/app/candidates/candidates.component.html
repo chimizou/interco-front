@@ -1,9 +1,14 @@
 <div class="container">
     <div class="panel panel-heading">Liste des candidats</div>
     <div class="panel-body">
-        <button class="btn btn-primary" (click)="onGetCandidates()">Candidates</button>
-    </div>
-    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onSearchCandidates(f.value)">
+        <label>Rechercher: </label>
+        <input type="text" name="keyWord" ngModel>
+        <button class="btn btn-primary" type="submit">
+          <span class="gliphicon gliphicon-search"></span>
+          Rechercher
+        </button>
+      </form>
       <table *ngIf="candidates" class="table table-striped">
         <tr>
           <th>ID</th>
@@ -15,8 +20,13 @@
           <td>{{ candidate.idCandidate }}</td>
           <td>{{ candidate.firstName }}</td>
           <td>{{ candidate.lastName }}</td>
-          <td>{{ candidate.birthday }}</td>
+          <td>{{ candidate.birthday | date:'dd/MM/yyyy' }}</td>
+          <td><a class="btn btn-danger" (click)="onDeleteCandidate(candidate)">Delete</a></td>
         </tr>
       </table>
+      <ul *ngIf="pages" class="nav nav-pills">
+        <li class='clickable' [ngClass]="i==currentPage ? 'active' : '' " *ngFor="let p of pages; let i=index"><a
+          (click)="onPageCandidate(i)">{{ i }}</a></li>
+      </ul>
     </div>
 </div>
