@@ -1,44 +1,18 @@
+<!-- <div class="alert alert-danger" [hidden]="!error">
+  There was a problem logging in. Please try again.
+</div> -->
 <div class="container">
-
-    <div class="row">
-      <h2 style="margin-left:50px">Login with Social Media</h2>
-
-      <div class="vl">
-        <span class="vl-innertext">or</span>
-      </div>
-
-      <div class="col">
-        <a href="#" class="fb btn">
-          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-        </a>
-        <a href="#" class="linkedin btn">
-          <i class="fa fa-linkedin fa-fw"></i> Login with Linkedin
-        </a>
-        <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-        </i> Login with Google+
-        </a>
-      </div>
-
-      <div class="col">
-        <div class="hide-md-lg">
-          <p>Or sign in manually:</p>
-        </div>
-
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
-      </div>
-
+  <form role="form" (submit)="login()">
+    <div class="form-group">
+      <label for="username">Username:</label> <input type="text"
+                                                     class="form-control" id="username" name="username"
+                                                     [(ngModel)]="credentials.username"/>
     </div>
-</div>
-
-<div class="bottom-container">
-  <div class="row">
-    <div class="col">
-      <a href="#" style="color:white" class="btn">Sign up</a>
+    <div class="form-group">
+      <label for="password">Password:</label> <input type="password"
+                                                     class="form-control" id="password" name="password"
+                                                     [(ngModel)]="credentials.password"/>
     </div>
-    <div class="col">
-      <a href="#" style="color:white" class="btn">Forgot password?</a>
-    </div>
-  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
