@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CandidatesService } from '../services/candidates.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-candidates',
@@ -10,13 +11,13 @@ import { CandidatesService } from '../services/candidates.service'
 export class CandidatesComponent implements OnInit {
 
   public candidates: any;
-  public size: number =2;
+  public size: number = 4;
   public currentPage: number;
   public totalPages: number;
   public pages: Array<number>;
   public currentKeyWord: string;
 
-  constructor(private candidatesService: CandidatesService) { }
+  constructor(private candidatesService: CandidatesService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -65,6 +66,10 @@ export class CandidatesComponent implements OnInit {
         console.log(err);
       });
     }
+  }
+
+  onEditCandidate(candidate: any){
+    this.router.navigateByUrl("/edit-candidate/" + candidate.idCandidate);
   }
 
 }

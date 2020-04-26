@@ -1,1 +1,49 @@
-<p>add-candidate works!</p>
+<div class="container">
+<div class="panel panel-default">
+    <div class="panel-heading">Nouveau Produit</div>
+    <div *ngIf="mode == 1" class="panel-body">
+        <form #f="ngForm" (ngSubmit)="onSaveCandidate(f.value)">
+            <div class="form-group">
+                <label class="control-label">Prénom</label>
+                <input class="form-control" type="text" name="firstName" ngModel>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Nom</label>
+                <input class="form-control" type="text" name="lastName" ngModel>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Date de naissance</label>
+                <input class="form-control" type="date" name="birthDate" ngModel>
+            </div>
+
+            <button class="btn btn-success" type="submit">Enregistrer</button>
+
+        </form>
+
+    </div>
+    <div *ngIf="mode == 2" class="panel-body">
+            <div class="form-group">
+                <label>ID: </label>
+                <label>{{currentCandidate.idCandidate}}</label>
+            </div>
+            <div class="form-group">
+                <label>Prénom: </label>
+                <label>{{currentCandidate.firstName}}</label>
+            </div>
+            <div class="form-group">
+                <label>Nom: </label>
+                <label>{{currentCandidate.lastName}}</label>
+            </div>
+            <div class="form-group">
+                <label>Date de naissance: </label>
+                <label>{{currentCandidate.birthDate | date:'dd/MM/yyyy' }}</label>
+            </div>
+            <p>
+                <button class="btn btn-primary" (click)="onBackToAddCandidate()">Retour</button>
+            </p>
+    </div>
+
+</div>
+</div>

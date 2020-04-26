@@ -1,5 +1,7 @@
 <div class="container">
-    <div class="panel panel-heading">Liste des candidats</div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Liste des candidats</div>
+
     <div class="panel-body">
       <form #f="ngForm" (ngSubmit)="onSearchCandidates(f.value)">
         <label>Rechercher: </label>
@@ -10,23 +12,32 @@
         </button>
       </form>
       <table *ngIf="candidates" class="table table-striped">
-        <tr>
-          <th>ID</th>
-          <th>Nom</th>
-          <th>Prenom</th>
-          <th>Date naissance</th>
-        </tr>
-        <tr *ngFor="let candidate of candidates._embedded.candidates">
-          <td>{{ candidate.idCandidate }}</td>
-          <td>{{ candidate.firstName }}</td>
-          <td>{{ candidate.lastName }}</td>
-          <td>{{ candidate.birthday | date:'dd/MM/yyyy' }}</td>
-          <td><a class="btn btn-danger" (click)="onDeleteCandidate(candidate)">Delete</a></td>
-        </tr>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date naissance</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let candidate of candidates._embedded.candidates">
+            <td>{{ candidate.idCandidate }}</td>
+            <td>{{ candidate.firstName }}</td>
+            <td>{{ candidate.lastName }}</td>
+            <td>{{ candidate.birthDate | date:'dd/MM/yyyy' }}</td>
+            <td>
+              <a class="btn btn-danger" (click)="onDeleteCandidate(candidate)">Supprimer</a>&nbsp;
+              <a class="btn btn-primary" (click)="onEditCandidate(candidate)">Modifier</a>
+            </td>
+          </tr>
+        </tbody>
       </table>
       <ul *ngIf="pages" class="nav nav-pills">
         <li class='clickable' [ngClass]="i==currentPage ? 'active' : '' " *ngFor="let p of pages; let i=index"><a
           (click)="onPageCandidate(i)">{{ i }}</a></li>
       </ul>
     </div>
+    
 </div>
