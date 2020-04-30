@@ -23,8 +23,6 @@ export class EditCandidateComponent implements OnInit {
     this.candidatesService.getResource(this.idCandidate).subscribe(data => {
       this.currentCandidate = data;
       this.currentCandidate.birthDate = formatDate(data.birthDate, 'yyyy-MM-dd', 'en-US');
-      console.log(this.currentCandidate.birthDate);
-      console.log(this.currentCandidate);
     }, err => {
       console.log(err);
     });
@@ -33,7 +31,6 @@ export class EditCandidateComponent implements OnInit {
   onModifyCandidate(formValue: any){
     this.candidatesService.updateResource(this.candidatesService.HOST+"/candidates/" + this.idCandidate, formValue)
     .subscribe(res => {
-      console.log(res);
       alert("Mise à jour effectuée avec succès");
       this.router.navigateByUrl("/candidates")
     }, err => {

@@ -2,25 +2,31 @@
 <div class="panel panel-default">
     <div class="panel-heading">Nouveau Produit</div>
     <div *ngIf="mode == 1" class="panel-body">
-        <form #f="ngForm" (ngSubmit)="onSaveCandidate(f.value)">
+        <form [formGroup]="candidateForm" (ngSubmit)="onSaveCandidate()">
             <div class="form-group">
-                <label class="control-label">Prénom</label>
-                <input class="form-control" type="text" name="firstName" ngModel>
+                <label for="firstName" class="control-label">Prénom</label>
+                <input class="form-control is-invalid" type="text" id="firstName" formControlName="firstName">
+                <control-messages [control]="candidateForm.controls['firstName']"></control-messages>
             </div>
 
             <div class="form-group">
-                <label class="control-label">Nom</label>
-                <input class="form-control" type="text" name="lastName" ngModel>
+                <label for="lastName" class="control-label">Nom</label>
+                <input class="form-control" type="text" id="lastName" formControlName="lastName">
+                <control-messages [control]="candidateForm.controls['lastName']"></control-messages>
             </div>
 
             <div class="form-group">
-                <label class="control-label">Date de naissance</label>
-                <input class="form-control" type="date" name="birthDate" ngModel>
+                <label for="email" class="control-label">Email</label>
+                <input class="form-control" type="text" id="email" formControlName="email">
+                <control-messages [control]="candidateForm.controls['email']"></control-messages>
             </div>
 
-            <button class="btn btn-success" type="submit">Enregistrer</button>
-
-        </form>
+            <div class="form-group">
+                <label for="birthDate" class="control-label">Date de naissance</label>
+                <input class="form-control" type="date" id="birthDate" formControlName="birthDate">
+            </div>
+            <button class="btn btn-success" type="submit" [disabled]="candidateForm.invalid">Enregistrer</button>
+</form>
 
     </div>
     <div *ngIf="mode == 2" class="panel-body">
@@ -35,6 +41,10 @@
             <div class="form-group">
                 <label>Nom: </label>
                 <label>{{currentCandidate.lastName}}</label>
+            </div>
+            <div class="form-group">
+                <label>Email: </label>
+                <label>{{currentCandidate.email}}</label>
             </div>
             <div class="form-group">
                 <label>Date de naissance: </label>
