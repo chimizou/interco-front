@@ -3,20 +3,23 @@
     <div class="panel-heading">Liste des candidats</div>
 
     <div class="panel-body">
-      <form #f="ngForm" (ngSubmit)="onSearchCandidates(f.value)">
-        <label>Rechercher: </label>
-        <input type="text" name="keyWord" ngModel>
-        <button class="btn btn-primary" type="submit">
-          <span class="gliphicon gliphicon-search"></span>
-          Rechercher
-        </button>
-      </form>
+        <div class="text-right">
+          <form #f="ngForm" (ngSubmit)="onSearchCandidates(f.value.keyWord)">
+            <label>Rechercher: </label>&nbsp;
+            <input type="text" name="keyWord" ngModel>&nbsp;
+            <button class="btn btn-info" type="submit">
+              <span class="glyphicon glyphicon-search"></span> Chercher &nbsp;
+            </button>
+          </form>
+      </div>
+      
       <table *ngIf="candidates" class="table table-striped">
         <thead>
           <tr>
             <th>ID</th>
             <th>Nom</th>
             <th>Prenom</th>
+            <th>Email</th>
             <th>Date naissance</th>
             <th>Action</th>
           </tr>
@@ -26,10 +29,11 @@
             <td>{{ candidate.idCandidate }}</td>
             <td>{{ candidate.firstName }}</td>
             <td>{{ candidate.lastName }}</td>
+            <td>{{ candidate.email }}</td>
             <td>{{ candidate.birthDate | date:'dd/MM/yyyy' }}</td>
             <td>
-              <a class="btn btn-danger" (click)="onDeleteCandidate(candidate)">Supprimer</a>&nbsp;
-              <a class="btn btn-primary" (click)="onEditCandidate(candidate)">Modifier</a>
+              <a class='clickable' (click)="onDeleteCandidate(candidate)"><span class="glyphicon glyphicon-trash"></span></a> &nbsp; | &nbsp;
+              <a class="clickable" (click)="onEditCandidate(candidate)"><span class="glyphicon glyphicon-pencil"></span></a>
             </td>
           </tr>
         </tbody>

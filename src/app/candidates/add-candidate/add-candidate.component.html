@@ -1,6 +1,7 @@
 <div class="container">
-<div class="panel panel-default">
-    <div class="panel-heading">Nouveau Produit</div>
+    <app-message-modal *ngIf="displayMessageModal" [messageModal]="messageModal"></app-message-modal>
+    <div class="panel panel-default">
+    <div class="panel-heading">Nouveau Candidat</div>
     <div *ngIf="mode == 1" class="panel-body">
         <form [formGroup]="candidateForm" (ngSubmit)="onSaveCandidate()">
             <div class="form-group">
@@ -25,6 +26,15 @@
                 <label for="birthDate" class="control-label">Date de naissance</label>
                 <input class="form-control" type="date" id="birthDate" formControlName="birthDate">
             </div>
+
+            <div *ngIf="talentAdvocates" class="form-group">
+                <label for="talentAdvocate" class="control-label">Talent Advocate</label>
+                <select formControlName="talentAdvocate">
+                    <option [ngValue]="talentAdvocate" *ngFor="let talentAdvocate of talentAdvocates">{{talentAdvocate.firstName}}</option>
+                </select>
+            </div>
+            
+            
             <button class="btn btn-success" type="submit" [disabled]="candidateForm.invalid">Enregistrer</button>
 </form>
 
@@ -56,4 +66,45 @@
     </div>
 
 </div>
+</div>
+
+<div class="container row">
+    <div class="col-md-12">
+        <h1>Upload Image</h1>
+    </div>
+</div>
+
+<div class="container row">
+    <div class="col-md-6">
+        <input type="file" (change)="onFileChanged($event)">
+
+    </div>
+    <div class="col-md-6">
+        <input type="button" (click)="onUpload()" value="upload">
+    </div>
+</div>
+<hr />
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=message>{{message}}</div>
+    </div>
+</div>
+
+<div class="container row">
+    <div class="col-md-6">
+        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+            name="name" />
+    </div>
+    <div class="col-md-6">
+        <input type="button" (click)="getImage()" value="Get Image">
+
+    </div>
+</div>
+
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=retrievedImage>
+            <img [src]="retrievedImage">
+        </div>
+    </div>
 </div>

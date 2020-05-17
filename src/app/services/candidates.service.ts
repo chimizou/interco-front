@@ -13,7 +13,7 @@ export class CandidatesService {
   constructor(private httpClient: HttpClient) { }
 
   public getAllCandidates(){
-    return this.httpClient.get(this.HOST + "candidates");
+    return this.httpClient.get("/api/candidate/listCandidates");
   }
 
   public getCandidatesByPage(currentPage : number, size : number){

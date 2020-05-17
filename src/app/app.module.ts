@@ -13,6 +13,7 @@ import { AppService } from './app.service';
 import { EditCandidateComponent } from './candidates/edit-candidate/edit-candidate.component';
 import { ControlMessagesComponent } from './util/control-messages.component';
 import { ValidationService } from './services/validation.service';
+import { MessageModalComponent } from './modal/message-modal/message-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ValidationService } from './services/validation.service';
     LoginComponent,
     HomeComponent,
     EditCandidateComponent,
-    ControlMessagesComponent
+    ControlMessagesComponent,
+    MessageModalComponent
   ],
   imports: [
     BrowserModule,

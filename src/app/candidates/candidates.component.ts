@@ -16,11 +16,12 @@ export class CandidatesComponent implements OnInit {
   public totalPages: number;
   public pages: Array<number>;
   public currentKeyWord: string;
+  private initialForm: any = {keyWord: ""};
 
   constructor(private candidatesService: CandidatesService, private router: Router) { }
 
   ngOnInit(): void {
-
+    this.onSearchCandidates(this.initialForm);
   }
 
   onGetCandidates() {
