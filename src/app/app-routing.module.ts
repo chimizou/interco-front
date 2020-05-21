@@ -4,7 +4,6 @@ import { CandidatesComponent } from './candidates/candidates.component';
 import { HomeComponent } from './home/home.component';
 import { AddCandidateComponent } from './candidates/add-candidate/add-candidate.component';
 import { LoginComponent } from './login/login.component';
-import { EditCandidateComponent } from './candidates/edit-candidate/edit-candidate.component';
 
 const routes: Routes = [
   {
@@ -26,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: "edit-candidate/:idCandidate",
-    component: EditCandidateComponent
+    component: AddCandidateComponent
   },
   {
    path: "login",

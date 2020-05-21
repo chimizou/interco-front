@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let candidate of candidates._embedded.candidates">
+          <tr *ngFor="let candidate of candidates">
             <td>{{ candidate.idCandidate }}</td>
             <td>{{ candidate.firstName }}</td>
             <td>{{ candidate.lastName }}</td>
@@ -33,7 +33,7 @@
             <td>{{ candidate.birthDate | date:'dd/MM/yyyy' }}</td>
             <td>
               <a class='clickable' (click)="onDeleteCandidate(candidate)"><span class="glyphicon glyphicon-trash"></span></a> &nbsp; | &nbsp;
-              <a class="clickable" (click)="onEditCandidate(candidate)"><span class="glyphicon glyphicon-pencil"></span></a>
+              <a class="clickable" (click)="onEditCandidate(candidate.idCandidate)"><span class="glyphicon glyphicon-pencil"></span></a>
             </td>
           </tr>
         </tbody>

@@ -21,7 +21,7 @@ export class CandidatesService {
   }
 
   public searchCandidatesByFirstName(firstNameKeyWord : string , currentPage : number, size : number){
-        return this.httpClient.get(this.HOST + "candidates/search/byFirstNamePage?firstName=" + firstNameKeyWord + "&page=" + currentPage + "&size=" + size);
+        return this.httpClient.get("/api/candidate/byFirstNamePage?firstName=" + firstNameKeyWord + "&page=" + currentPage + "&size=" + size);
   }
 
   public deleteResource(url){
@@ -32,8 +32,8 @@ export class CandidatesService {
     return this.httpClient.post<Candidate>(url, data);
   }
 
-  public getResource(idCandidate) : Observable<Candidate>{
-    return this.httpClient.get<Candidate>(this.HOST + "candidates/" + idCandidate);
+  public getResource(url, id) : Observable<Candidate>{
+    return this.httpClient.get<Candidate>(url + id);
   }
 
   public updateResource(url, data) : Observable<Candidate>{

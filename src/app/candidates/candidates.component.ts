@@ -49,9 +49,10 @@ export class CandidatesComponent implements OnInit {
   searchCandidates(){
     this.candidatesService.searchCandidatesByFirstName(this.currentKeyWord, this.currentPage, this.size)
         .subscribe(data => {
-          this.totalPages = data["page"].totalPages;    //data.page.totalPages est possible aussi syntaxique, sauf qu'il va lever une erreur de compilation.
+          console.log(data);
+          this.totalPages = data["totalPages"];    //data.page.totalPages est possible aussi syntaxique, sauf qu'il va lever une erreur de compilation.
           this.pages = new Array<number>(this.totalPages);
-          this.candidates = data;
+          this.candidates = data["content"];
         }, err => {
           console.log(err);
         })
@@ -69,8 +70,8 @@ export class CandidatesComponent implements OnInit {
     }
   }
 
-  onEditCandidate(candidate: any){
-    this.router.navigateByUrl("/edit-candidate/" + candidate.idCandidate);
+  onEditCandidate(candidateId: number){
+    this.router.navigateByUrl("/edit-candidate/" + candidateId);
   }
 
 }

@@ -10,7 +10,6 @@ import { AddCandidateComponent } from './candidates/add-candidate/add-candidate.
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AppService } from './app.service';
-import { EditCandidateComponent } from './candidates/edit-candidate/edit-candidate.component';
 import { ControlMessagesComponent } from './util/control-messages.component';
 import { ValidationService } from './services/validation.service';
 import { MessageModalComponent } from './modal/message-modal/message-modal.component';
@@ -22,7 +21,6 @@ import { MessageModalComponent } from './modal/message-modal/message-modal.compo
     AddCandidateComponent,
     LoginComponent,
     HomeComponent,
-    EditCandidateComponent,
     ControlMessagesComponent,
     MessageModalComponent
   ],
