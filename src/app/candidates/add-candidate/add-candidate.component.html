@@ -1,7 +1,7 @@
 <div class="container">
     <app-message-modal *ngIf="displayMessageModal" [messageModal]="messageModal"></app-message-modal>
     <div class="panel panel-default">
-    <div class="panel-heading">Nouveau Candidat</div>
+    <div class="panel-heading">{{ saveOrUpdateMode }} candidat</div>
     <div *ngIf="mode == 1" class="panel-body">
         <form [formGroup]="candidateForm" (ngSubmit)="onSaveOrUpdateCandidate()">
             <div class="form-group">

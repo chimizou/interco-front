@@ -3,16 +3,16 @@
     <div class="panel-heading">Liste des candidats</div>
 
     <div class="panel-body">
-        <div class="text-right">
-          <form #f="ngForm" (ngSubmit)="onSearchCandidates(f.value.keyWord)">
-            <label>Rechercher: </label>&nbsp;
-            <input type="text" name="keyWord" ngModel>&nbsp;
-            <button class="btn btn-info" type="submit">
-              <span class="glyphicon glyphicon-search"></span> Chercher &nbsp;
-            </button>
-          </form>
+      <div class="text-right">
+        <form #f="ngForm" (ngSubmit)="onSearchCandidates(f.value.keyWord)">
+          <label>Rechercher: </label>&nbsp;
+          <input type="text" name="keyWord" ngModel>&nbsp;
+          <button class="btn btn-info" type="submit">
+            <span class="glyphicon glyphicon-search"></span> Chercher &nbsp;
+          </button>
+        </form>
       </div>
-      
+
       <table *ngIf="candidates" class="table table-striped">
         <thead>
           <tr>
@@ -32,16 +32,19 @@
             <td>{{ candidate.email }}</td>
             <td>{{ candidate.birthDate | date:'dd/MM/yyyy' }}</td>
             <td>
-              <a class='clickable' (click)="onDeleteCandidate(candidate)"><span class="glyphicon glyphicon-trash"></span></a> &nbsp; | &nbsp;
-              <a class="clickable" (click)="onEditCandidate(candidate.idCandidate)"><span class="glyphicon glyphicon-pencil"></span></a>
+              <a class='clickable' (click)="onDeleteCandidate(candidate.idCandidate)"><span
+                  class="glyphicon glyphicon-trash"></span></a> &nbsp; | &nbsp;
+              <a class="clickable" (click)="onEditCandidate(candidate.idCandidate)"><span
+                  class="glyphicon glyphicon-pencil"></span></a>
             </td>
           </tr>
         </tbody>
       </table>
       <ul *ngIf="pages" class="nav nav-pills">
         <li class='clickable' [ngClass]="i==currentPage ? 'active' : '' " *ngFor="let p of pages; let i=index"><a
-          (click)="onPageCandidate(i)">{{ i }}</a></li>
+            (click)="onPageCandidate(i)">{{ i }}</a></li>
       </ul>
     </div>
-    
+
+  </div>
 </div>
